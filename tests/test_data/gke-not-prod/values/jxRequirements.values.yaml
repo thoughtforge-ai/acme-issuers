@@ -1,0 +1,15 @@
+jxRequirements:
+  cluster:
+    project: myproject
+    projectID: "123456789"
+    provider: gke
+    region: ""
+    zone: europe-west1-c
+  ingress:
+    domain: "stagingdomain.com"
+    externalDNS: false
+    namespaceSubDomain: -jx.
+    tls:
+      email: "someone@stagingdomain.com"
+      enabled: true
+      production: false

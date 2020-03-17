@@ -1,0 +1,14 @@
+# Source: acme/templates/cert-manager-prod-certificate.yaml
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: "tls-mydomain-com-p"
+  labels:
+    jenkins.io/letsencrypt-service: production
+spec:
+  secretName: "tls-mydomain-com-p"
+  issuerRef:
+    name: letsencrypt-prod
+  commonName: "*.mydomain.com"
+  dnsNames:
+  - "*.mydomain.com"

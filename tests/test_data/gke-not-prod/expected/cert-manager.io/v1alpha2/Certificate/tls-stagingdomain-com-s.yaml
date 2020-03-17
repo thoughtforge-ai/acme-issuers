@@ -1,0 +1,14 @@
+# Source: acme/templates/cert-manager-staging-certificate.yaml
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: "tls-stagingdomain-com-s"
+  labels:
+    jenkins.io/letsencrypt-service: staging
+spec:
+  secretName: "tls-stagingdomain-com-s"
+  issuerRef:
+    name: letsencrypt-staging
+  commonName: "*.stagingdomain.com"
+  dnsNames:
+  - "*.stagingdomain.com"

@@ -1,0 +1,19 @@
+# Source: acme/templates/cert-manager-prod-issuer.yaml
+apiVersion: cert-manager.io/v1alpha2
+kind: Issuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: "someone@mydomain.com"
+    # Name of a secret used to store the ACME account private key
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+    - selector:
+        dnsNames:
+        - "*.mydomain.com"
+        - "mydomain.com"
+      # ACME DNS-01 provider configurations
+      dns01:

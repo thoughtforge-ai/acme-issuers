@@ -1,0 +1,15 @@
+jxRequirements:
+  cluster:
+    project: ""
+    projectID: ""
+    provider: "kubernetes"
+    region: ""
+    zone: ""
+  ingress:
+    domain: "mydomain.com"
+    externalDNS: false
+    namespaceSubDomain: -jx.
+    tls:
+      email: "someone@mydomain.com"
+      enabled: true
+      production: true

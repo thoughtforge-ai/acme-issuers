@@ -1,0 +1,17 @@
+{{- if .Values.jxRequirements.ingress.tls.enabled }}
+{{- if not .Values.jxRequirements.ingress.tls.production }}
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: "tls-{{ .Values.jxRequirements.ingress.domain | replace "." "-" }}-s"
+  labels:
+    jenkins.io/letsencrypt-service: staging
+spec:
+  secretName: "tls-{{ .Values.jxRequirements.ingress.domain | replace "." "-" }}-s"
+  issuerRef:
+    name: letsencrypt-staging
+  commonName: "*.{{ .Values.jxRequirements.ingress.domain }}"
+  dnsNames:
+  - "*.{{ .Values.jxRequirements.ingress.domain }}"
+{{- end }}
+{{- end }}
