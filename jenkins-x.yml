@@ -10,11 +10,11 @@ pipelineConfig:
             steps:
               - name: lint
                 command: helm lint
-                dir: /workspace/source/acme/acme
+                dir: /workspace/source/acme
               - name: test
                 command: make test
                 image: golang:1.13.9
-                dir: /workspace/source/acme/test
+                dir: /workspace/source/test
     release:
       pipeline:
         stages:
@@ -24,4 +24,4 @@ pipelineConfig:
             steps:
               - name: release
                 command: make release
-                dir: /workspace/source/acme/acme
+                dir: /workspace/source/acme
