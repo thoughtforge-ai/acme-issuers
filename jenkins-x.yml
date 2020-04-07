@@ -1,1 +1,27 @@
-buildPack: charts
+buildPack: none
+pipelineConfig:
+  pipelines:
+    pullRequest:
+      pipeline:
+        stages:
+          - agent:
+              image: gcr.io/jenkinsxio-labs/helm:0.0.21
+            name: chart
+            steps:
+              - name: lint
+                command: helm lint
+                dir: /workspace/source/acme/acme
+              - name: test
+                command: make test
+                image: golang:1.13.9
+                dir: /workspace/source/acme/test
+    release:
+      pipeline:
+        stages:
+          - agent:
+              image: gcr.io/jenkinsxio-labs/helm:0.0.21
+            name: chart
+            steps:
+              - name: release
+                command: make release
+                dir: /workspace/source/acme/acme
