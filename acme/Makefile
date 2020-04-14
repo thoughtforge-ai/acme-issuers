@@ -1,4 +1,4 @@
-CHART_REPO := gs://jenkinsxio-labs/charts
+CHART_REPO := gs://jenkinsxio-labs-private/charts
 NAME := acme
 build: clean
 	helm lint
