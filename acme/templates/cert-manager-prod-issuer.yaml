@@ -20,7 +20,7 @@ spec:
 {{- if eq .Values.jxRequirements.cluster.provider "gke" }}
         clouddns:
           # The project in which to update the DNS zone
-          project: "{{ .Values.jxRequirements.cluster.projectID }}"
+          project: "{{ .Values.jxRequirements.cluster.project }}"
           # A secretKeyRef to a google cloud json service account
           serviceAccountSecretRef:
             name: external-dns-gcp-sa
