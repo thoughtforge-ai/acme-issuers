@@ -1,0 +1,39 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  annotations:
+    lighthouse.jenkins-x.io/prependStepsURL: https://raw.githubusercontent.com/jenkins-x/jx3-pipeline-catalog/4a22dee8a67f66e5012729808de081d2f4d0e715/tasks/git-clone/git-clone.yaml
+  creationTimestamp: null
+  name: pullrequest
+spec:
+  pipelineSpec:
+    tasks:
+    - name: from-build-pack
+      resources: {}
+      taskSpec:
+        metadata: {}
+        stepTemplate:
+          name: ""
+          resources:
+            requests:
+              cpu: 400m
+              memory: 512Mi
+          workingDir: /workspace/source
+        steps:
+        - image: gcr.io/jenkinsxio/jx-cli:3.0.684
+          name: jx-variables
+          resources: {}
+          script: |
+            #!/usr/bin/env bash
+            jx gitops variables
+        - image: gcr.io/jenkinsxio/jx:2.1.150
+          name: build-helm-build
+          resources: {}
+          script: |
+            #!/bin/sh
+            jx step helm build
+
+  podTemplate: {}
+  serviceAccountName: tekton-bot
+  timeout: 240h0m0s
+status: {}
