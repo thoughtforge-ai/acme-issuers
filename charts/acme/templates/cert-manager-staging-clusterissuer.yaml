@@ -1,17 +1,18 @@
-{{- if and .Values.jxRequirements.ingress.domain .Values.jxRequirements.ingress.tls.production }}
-{{- if not .Values.issuer.cluster }}
+{{- if .Values.jxRequirements.ingress.tls.enabled }}
+{{- if not .Values.jxRequirements.ingress.tls.production }}
+{{- if .Values.issuer.cluster }}
 {{- if .Values.issuer.enabled }}
 apiVersion: cert-manager.io/v1alpha2
-kind: Issuer
+kind: ClusterIssuer
 metadata:
-  name: letsencrypt-prod
+  name: letsencrypt-staging
 spec:
   acme:
-    server: https://acme-v02.api.letsencrypt.org/directory
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
     email: "{{ .Values.jxRequirements.ingress.tls.email }}"
     # Name of a secret used to store the ACME account private key
     privateKeySecretRef:
-      name: letsencrypt-prod
+      name: letsencrypt-staging
     solvers:
     - selector:
         dnsNames:
@@ -33,6 +34,7 @@ spec:
 {{- if eq .Values.jxRequirements.cluster.provider "eks" }}
         route53:
           region: {{ .Values.jxRequirements.cluster.region }}
+{{- end }}
 {{- end }}
 {{- end }}
 {{- end }}

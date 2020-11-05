@@ -1,8 +1,8 @@
 {{- if and .Values.jxRequirements.ingress.domain .Values.jxRequirements.ingress.tls.production }}
-{{- if not .Values.issuer.cluster }}
+{{- if .Values.issuer.cluster }}
 {{- if .Values.issuer.enabled }}
 apiVersion: cert-manager.io/v1alpha2
-kind: Issuer
+kind: ClusterIssuer
 metadata:
   name: letsencrypt-prod
 spec:

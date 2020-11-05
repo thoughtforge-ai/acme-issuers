@@ -12,3 +12,9 @@ jxRequirements:
       enabled: true
       production: true
       secretName: ""
+
+secretName: ""
+
+issuer:
+  enabled: false
+  cluster: false

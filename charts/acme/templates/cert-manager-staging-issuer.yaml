@@ -1,5 +1,7 @@
 {{- if .Values.jxRequirements.ingress.tls.enabled }}
 {{- if not .Values.jxRequirements.ingress.tls.production }}
+{{- if not .Values.issuer.cluster }}
+{{- if .Values.issuer.enabled }}
 apiVersion: cert-manager.io/v1alpha2
 kind: Issuer
 metadata:
@@ -22,14 +24,18 @@ spec:
         clouddns:
           # The project in which to update the DNS zone
           project: "{{ .Values.jxRequirements.cluster.project }}"
+{{- if .Values.secretName }}
           # A secretKeyRef to a google cloud json service account
           serviceAccountSecretRef:
-            name: external-dns-gcp-sa
+            name: {{ .Values.secretName }}
             key: credentials.json
+{{- end }}
 {{- end }}
 {{- if eq .Values.jxRequirements.cluster.provider "eks" }}
         route53:
           region: {{ .Values.jxRequirements.cluster.region }}
+{{- end }}
+{{- end }}
 {{- end }}
 {{- end }}
 {{- end }}
