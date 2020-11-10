@@ -10,6 +10,9 @@ spec:
   secretName: "tls-{{ .Values.jxRequirements.ingress.domain | replace "." "-" }}-s"
   issuerRef:
     name: letsencrypt-staging
+{{- if .Values.issuer.cluster }}
+    kind: ClusterIssuer
+{{- end }}
   commonName: "*.{{ .Values.jxRequirements.ingress.domain }}"
   dnsNames:
   - "*.{{ .Values.jxRequirements.ingress.domain }}"
