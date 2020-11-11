@@ -34,6 +34,12 @@ spec:
         route53:
           region: {{ .Values.jxRequirements.cluster.region }}
 {{- end }}
+{{- if eq .Values.jxRequirements.cluster.provider "aks" }}
+        azureDNS:
+          subscriptionID: {{ .Values.jxRequirements.cluster.azure.dns.subscriptionId }}
+          resourceGroupName: {{ .Values.jxRequirements.cluster.azure.dns.resourceGroup }}
+          hostedZoneName: {{ .Values.jxRequirements.ingress.domain }}
+{{- end }}
 {{- end }}
 {{- end }}
 {{- end }}
