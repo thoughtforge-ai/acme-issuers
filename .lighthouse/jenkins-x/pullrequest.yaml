@@ -2,8 +2,7 @@ apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
   annotations:
-    lighthouse.jenkins-x.io/prependStepsURL: https://raw.githubusercontent.com/jenkins-x/jx3-pipeline-catalog/4a22dee8a67f66e5012729808de081d2f4d0e715/tasks/git-clone/git-clone.yaml
-  creationTimestamp: null
+    lighthouse.jenkins-x.io/prependStepsURL: https://raw.githubusercontent.com/jenkins-x/jx3-pipeline-catalog/005e78cf69b643862344397a635736a51dd1bd89/tasks/git-clone/git-clone-pr.yaml
   name: pullrequest
 spec:
   pipelineSpec:
@@ -26,7 +25,7 @@ spec:
           script: |
             #!/usr/bin/env bash
             jx gitops variables
-        - image: gcr.io/jenkinsxio/jx:2.1.150
+        - image:  gcr.io/jenkinsxio/jx-cli:3.0.684
           name: build-helm-build
           resources: {}
           script: |
