@@ -16,5 +16,6 @@ spec:
   commonName: "*.{{ .Values.jxRequirements.ingress.domain }}"
   dnsNames:
   - "*.{{ .Values.jxRequirements.ingress.domain }}"
+  - "{{ .Values.jxRequirements.ingress.domain }}"
 {{- end }}
 {{- end }}
