@@ -20,7 +20,7 @@ spec:
       # ACME DNS-01 provider configurations
       dns01:
 {{- if eq .Values.jxRequirements.cluster.provider "gke" }}
-        clouddns:
+        cloudDNS:
           # The project in which to update the DNS zone
           project: "{{ .Values.jxRequirements.cluster.project }}"
 {{- if .Values.secretName }}
