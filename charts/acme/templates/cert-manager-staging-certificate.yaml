@@ -1,6 +1,6 @@
 {{- if .Values.jxRequirements.ingress.tls.enabled }}
 {{- if not .Values.jxRequirements.ingress.tls.production }}
-apiVersion: cert-manager.io/v1alpha2
+apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: "tls-{{ .Values.jxRequirements.ingress.domain | replace "." "-" }}-s"

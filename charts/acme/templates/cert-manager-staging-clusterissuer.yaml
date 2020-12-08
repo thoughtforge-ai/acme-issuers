@@ -2,7 +2,7 @@
 {{- if not .Values.jxRequirements.ingress.tls.production }}
 {{- if .Values.issuer.cluster }}
 {{- if .Values.issuer.enabled }}
-apiVersion: cert-manager.io/v1alpha2
+apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: letsencrypt-staging
