@@ -55,14 +55,10 @@ spec:
           resources: {}
           script: |
             #!/usr/bin/env sh
-            jx gitops helm release
-        - image: gcr.io/jenkinsxio/jx-promote:0.0.148
-          name: promote-jx-promote
-          resources: {}
-          script: |
-            #!/usr/bin/env sh
             source /workspace/source/.jx/variables.sh
-            jx promote -b --all-auto --timeout 1h --no-poll
+            cd charts/acme
+            make release
+
   podTemplate: {}
   serviceAccountName: tekton-bot
   timeout: 240h0m0s
