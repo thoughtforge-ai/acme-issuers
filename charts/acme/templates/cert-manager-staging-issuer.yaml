@@ -36,7 +36,7 @@ spec:
           region: {{ .Values.jxRequirements.cluster.region }}
 {{- end }}
 {{- if eq .Values.jxRequirements.cluster.provider "aks" }}
-        azuredns:
+        azureDNS:
           subscriptionID: {{ .Values.jxRequirements.cluster.azure.dns.subscriptionId }}
           resourceGroupName: {{ .Values.jxRequirements.cluster.azure.dns.resourceGroup }}
           hostedZoneName: {{ .Values.jxRequirements.ingress.domain }}
