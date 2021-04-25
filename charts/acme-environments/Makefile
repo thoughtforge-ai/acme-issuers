@@ -1,5 +1,5 @@
-CHART_REPO := gs://jenkinsxio/charts
-NAME := acme
+CHART_REPO := http://jenkins-x-chartmuseum.jx.svc.cluster.local:8080
+NAME := acme-environments
 build: clean
 	helm lint
 
