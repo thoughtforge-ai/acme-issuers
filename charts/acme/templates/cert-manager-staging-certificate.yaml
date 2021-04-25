@@ -6,7 +6,7 @@ kind: Certificate
 metadata:
   name: "tls-{{ .ingress.domain | replace "." "-" }}-s"
   labels:
-    jenkins.io/letsencrypt-service: letsencrypt-staging
+    jenkins.io/letsencrypt-service: staging
 spec:
   secretName: "tls-{{ .ingress.domain | replace "." "-" }}-s"
   issuerRef:
