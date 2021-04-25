@@ -11,5 +11,5 @@ release: clean
 	sed -i -e "s/version:.*/version: $(VERSION)/" Chart.yaml
 	helm lint
 	helm package .
-	helm repo add jx-labs $(CHART_REPO)
-	helm gcs push ${NAME}*.tgz jx-labs --public
+	helm repo add tf-api $(CHART_REPO)
+	helm push ${NAME}*.tgz tf-api --public
