@@ -34,7 +34,7 @@ spec:
           script: |
             #!/usr/bin/env sh
             source /workspace/source/.jx/variables.sh
-            cd charts/acme
+            cd charts/acme-environments
             make release
   podTemplate: {}
   serviceAccountName: tekton-bot
