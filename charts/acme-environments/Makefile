@@ -14,3 +14,4 @@ release: clean
 	helm repo add tf-api $(CHART_REPO)
 	helm plugin install https://github.com/chartmuseum/helm-push.git
 	helm push ${NAME}*.tgz tf-api --public
+	
