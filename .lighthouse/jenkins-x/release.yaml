@@ -28,14 +28,8 @@ spec:
           resources: {}
         - name: promote-changelog
           resources: {}
-        - image: gcr.io/jenkinsxio/helm-release:0.0.1
-          name: promote-helm-release
+        - name: promote-helm-release
           resources: {}
-          script: |
-            #!/usr/bin/env sh
-            source /workspace/source/.jx/variables.sh
-            cd charts/acme-environments
-            make release
   podTemplate: {}
   serviceAccountName: tekton-bot
   timeout: 240h0m0s
