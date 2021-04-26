@@ -12,7 +12,7 @@ spec:
     email: "{{ .Values.jxRequirements.ingress.tls.email }}"
     # Name of a secret used to store the ACME account private key
     privateKeySecretRef:
-      name: cluster-letsencrypt-staging
+      name: letsencrypt-staging
     solvers:
     # ACME DNS-01 provider configurations
     - dns01:
